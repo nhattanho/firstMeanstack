@@ -8,6 +8,7 @@ const path = require('path');
 console.log(path.parse(__filename));
 */
 
+/*
 // Commit: Test events module
 const EventEmitter = require('events');
 const event = new EventEmitter();
@@ -16,8 +17,13 @@ const event = new EventEmitter();
 event.on('messageLog', function(eventArgs){
 	console.log('Listener called', eventArgs);
 });
+*/
+
+//Note: "function(eventArgs){}" == "(eventArgs) => {}"
 
 // + Raise an event with arguments
 //event.emit('mesageLog', 1, 'url');
-event.emit('messageLog', {id: 1, url: 'http://'});
+//event.emit('messageLog', {id: 1, url: 'http://'});
 
+const logger = require('./logger');
+logger('honhattan');
