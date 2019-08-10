@@ -1,29 +1,14 @@
-/*
-// Commit: Test export and path module
-var object_logger = require('./logger');
-console.log(object_logger);
-console.log(module);
-
-const path = require('path');
-console.log(path.parse(__filename));
-*/
-
-/*
-// Commit: Test events module
-const EventEmitter = require('events');
-const event = new EventEmitter();
-
-// + Register a listener for an event with arguments
-event.on('messageLog', function(eventArgs){
-	console.log('Listener called', eventArgs);
-});
-*/
-
 //Note: "function(eventArgs){}" == "(eventArgs) => {}"
 
 // + Raise an event with arguments
 //event.emit('mesageLog', 1, 'url');
 //event.emit('messageLog', {id: 1, url: 'http://'});
 
-const logger = require('./logger');
-logger('honhattan');
+const Logger = require('./logger'); // import class Logger from module logger.js
+const logger = new Logger();
+
+logger.on('messageLog', (arg)=> {
+	console.log('Listener called...', arg);
+});
+
+logger.log('honhattan');
