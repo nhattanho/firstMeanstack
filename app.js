@@ -32,3 +32,8 @@ const server = http.createServer((req, res)=>
 server.listen(3000); //waiting a raising event on port 3000
 
 console.log('Listening on port 3000...');
+
+const add_test = require('add_public');
+
+console.log(add_test.add(3,4));
+console.log(add_test.multiply(2,4));

@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "add_public": "file:add_public",
     "mongoose": "^5.6.9",
     "underscore": "^1.9.1"
   },
