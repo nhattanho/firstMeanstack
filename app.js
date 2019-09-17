@@ -43,6 +43,8 @@ const app = express();
 //parsing the body of request to json 
 app.use(express.json());
 app.use(helmet());
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 //Using for logging any request of client on cosole or log file in two ways
 //1) By using app.get('env') 
@@ -86,7 +88,8 @@ const courses = [
 ];
 
 app.get('/', (req,res)=>{
-	res.send('hello word');
+//	res.send('hello word');
+	res.render('index', {title: 'My Express App', message: 'hello'});
 });
 
 app.get('/api/list', (req, res)=>{
