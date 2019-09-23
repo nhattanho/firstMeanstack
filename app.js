@@ -36,8 +36,13 @@ console.log('Listening on port 3000...');
 const config = require('config');
 const morgan = require('morgan');
 const helmet = require('helmet');
-const log = require('./logger');
+const log = require('./middleware/logger');
 const Joi = require('joi');
+//Using for app.post with urlencoded form
+app.use(express.urlencoded({ extended: true }));
+//Using for making a file can be accessed or opened by directly url 
+//Accessing by typing an url like http://localhost:3000/readme.txt
+app.use(express.static('public'));
 const express = require('express');
 const app = express();
 //parsing the body of request to json 
@@ -82,12 +87,6 @@ else if(node_env == 'production') //export NODE_ENV=production
 {
 	console.log('Morgan disabled');
 }
-
-//Using for app.post with urlencoded form
-app.use(express.urlencoded({ extended: true }));
-//Using for making a file can be accessed or opened by directly url 
-//Accessing by typing an url like http://localhost:3000/readme.txt
-app.use(express.static('public'));
 
 //PORT
 const port = process.env.PORT || 3000;
