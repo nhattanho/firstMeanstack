@@ -1,5 +1,7 @@
 console.log('Before');
 
+/*
+//For callback function 
 //Asynchronous ==> nested ==> Callback Hell problem
 const user = getUser(1, getRepo1);
 
@@ -46,6 +48,17 @@ function displayCommits(commits)
 {
 	console.log('Commits are: ' + commits);
 }
+*/
+const p = new Promise((resolve, reject)=>
+{
+	setTimeout(()=> {
+		//resolve(1); // pending => resolve, fulfilled
+		reject(new Error('message')); // pending => reject
+	}, 2000);
+});
 
+p	
+ .catch(err => console.log('Error', err.message))
+ .then(result => console.log('Result', result))
 //=====================================================
 console.log('After');
