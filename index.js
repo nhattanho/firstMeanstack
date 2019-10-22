@@ -47,6 +47,43 @@ async function getCourses(){
         .select({name: 1, tags: 1});// only get information of name and tags
     console.log(courses);
 }
+
+// eq - equal
+// ne - not equal
+// gt - greater than
+// gte - greater than or equal to
+// lt - less than
+// lte - less than or equal to
+// in
+// nin - not in
+async function getCourses1(){
+    /*Get content at specific page
+    const pageNumber =  2;
+    const pageSze = 10;*/
+
+    const courses = await Course
+        //.find({price: {$gte: 10, $lte: 20}})
+        //.find({price: {$in: [10, 15, 20]}})
+        
+        /*using find with or/and*/
+        //.find()
+        //.or([{author: 'Mosh'}, {isPublished: true}])
+        //.and([{author: 'Mosh'}, {isPublished: true}])
+        
+        /*Find content starting with Nhat*/
+        .find({author: /^Nhat/})
+        /*Find content ending with Ho, option i using for case intensitive*/
+        .find ({author: /Ho$/i})
+
+        /*Find content having Nhat*/
+        .find({author: /.*Nhat.*/i})
+        /*.skip((pageNumber-1)*pageSize)*/
+        .limit(10)
+        .sort({name: 1}) //ascending 
+        .select({name: 1, tags: 1})// only get information of name and tags
+        .count(); //show how many objects in table of database and didn't show the select courses
+    console.log(courses);
+}
 //createCourse();
 //createCourse1();
-getCourses();
+getCourses1();
