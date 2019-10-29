@@ -67,8 +67,8 @@ async function getCourses1(){
         
         /*using find with or/and*/
         //.find()
-        //.or([{author: 'Mosh'}, {isPublished: true}])
-        //.and([{author: 'Mosh'}, {isPublished: true}])
+        //.or([{author: 'Nhat'}, {isPublished: true}])
+        //.and([{author: 'Nhat'}, {isPublished: true}])
         
         /*Find content starting with Nhat*/
         .find({author: /^Nhat/})
@@ -87,3 +87,49 @@ async function getCourses1(){
 //createCourse();
 //createCourse1();
 getCourses1();
+
+//Two ways to update
+/* 1.
+Approach: Query first
+findById()
+Modify its properties
+save()
+
+2.
+Approach: Update first
+Update directly
+Optionally: get the updated document
+*/
+/*Implement 1 way with retrieving*/
+async function updateCourse (id)
+{
+    
+    const course = await Course.findById(id);
+    if(!course) return;
+    course.isPublished = true;
+    course.author = 'Another Author';
+    /*The same as two line above
+    course.set({
+        isPublished: true,
+        author: 'Another Author'
+    })
+    */
+    const result = await course.save();
+    console.log(result);
+}
+//updateCourse('5dae27e0dd30d3208b3a858a');
+
+/*Implement 2 way with retrieving*/
+async function updateCourse1 (id)
+{
+    //const result = await Course.update(
+    const result = await Course.findByIdAndUpdate(id,
+    {   $set:{
+            author: 'Nhat Tan Ho',
+            isPublished: true
+        }
+    }, {new: true});
+    if(!result) return;
+    console.log(result);
+}
+updateCourse1('5dae27e0dd30d3208b3a858a');
