@@ -37,15 +37,25 @@ async function createCourse(name, author){
 async function listCourses(){
     const courses = await Course
     .find()
-    // populate author link and show infomation of specific author base on id
-    //name-_id <=> only show name, exclude id of this author
+    // populate author which was linked and showed by specific author having its id
+    //name-_id <=> only show name, exclude id of this populated author
     .populate('author', 'name -_id')
     .select('name author');//list propeties name and author
     console.log(courses);
 }
 
-//creatAuthor('Mosh', 'My bio', 'My Website');
+//creatAuthor('Nhat Ho', 'CS', 'My Website');
 
-//reateCourse('Node Course', '5dc317a55c7ec3206a2e2cab');
+//createCourse('Node Course of Nhat', '5dca1d8c6ee1990ccd7cdce0');
 
 listCourses();
+//Example of output
+/*
+{ _id: 5dc318b4e11b3620d360c36f, name: 'Node Course' }, ==> course 1
+  { _id: 5dc31b20e1702421a273359a, ==> course 2
+    name: 'Node Course',
+    author: { name: 'Mosh' } },
+  { _id: 5dca1e6513f1080e5b2f7631, ==> course 3
+    name: 'Node Course of Nhat',
+    author: { name: 'Nhat Ho' } } ==> because of populate only for author, include name and excluded id
+*/
