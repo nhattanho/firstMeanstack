@@ -30,9 +30,10 @@ async function listCourses(){
     .find()
     // populate author link and show infomation of specific author base on id
     //name-_id <=> only show name, exclude id of this author
-    .populate('author', 'name -_id')
-    .select('name author');//list propeties name and author
+    //.populate('author');
+    //.select('name');//list propeties name and author
     console.log(courses);
 }
 
+//createCourse('Nhat Course', new Author({name: 'Nhat'}));
 listCourses();
