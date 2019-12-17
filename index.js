@@ -133,3 +133,4 @@ async function updateCourse1 (id)
     console.log(result);
 }
 updateCourse1('5dae27e0dd30d3208b3a858a');
+
