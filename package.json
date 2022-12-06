@@ -6,7 +6,7 @@
   "dependencies": {
     "add_public": "file:add_public",
     "config": "^3.2.2",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "helmet": "^3.20.0",
     "joi": "^14.3.1",
     "mongoose": "^5.6.9",
