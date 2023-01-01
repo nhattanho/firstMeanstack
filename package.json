@@ -5,7 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "add_public": "file:add_public",
-    "config": "^3.2.2",
+    "config": "^3.3.8",
     "express": "^4.17.1",
     "helmet": "^3.20.0",
     "joi": "^14.3.1",
